@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AchChat.domain", "AchChat.d
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AchChat.domain.tests", "..\tests\AchChat.domain.tests\AchChat.domain.tests.csproj", "{9A3C352A-685F-49B6-8A05-251224BDB427}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AchChat.messages", "AchChat.messages\AchChat.messages.csproj", "{B179B7D5-CE86-4369-83E3-7308EBF81B12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,12 +57,23 @@ Global
 		{9A3C352A-685F-49B6-8A05-251224BDB427}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9A3C352A-685F-49B6-8A05-251224BDB427}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9A3C352A-685F-49B6-8A05-251224BDB427}.Release|x86.ActiveCfg = Release|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CCEFF30E-0807-4AC7-9D67-46E6E41D6F9A} = {56FA934C-6DA9-4057-8DD5-24B5AA00FB5D}
+		{B179B7D5-CE86-4369-83E3-7308EBF81B12} = {56FA934C-6DA9-4057-8DD5-24B5AA00FB5D}
 		{7641B02E-5A93-409E-B647-E8F947EF591F} = {7C9B17DB-5738-4143-8814-79E157E679FC}
 		{9A3C352A-685F-49B6-8A05-251224BDB427} = {2FBFF2DF-C6E3-4109-B4BA-64187868F327}
 	EndGlobalSection

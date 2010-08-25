@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>e2280fc2-918e-40f0-877d-93b8854e7d30</ProjectGuid>
+    <ProjectGuid>{B179B7D5-CE86-4369-83E3-7308EBF81B12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AchChat.messages</RootNamespace>
