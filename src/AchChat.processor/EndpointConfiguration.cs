@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using Symbiote.Core.Extensions;
 using Symbiote.Jackalope;
 
 using AchChat.messages;
 namespace AchChat.processor
 {
-    class EndpointConfiguration : IConfigureEndpoints
+    public class EndpointConfiguration : IConfigureEndpoints
     {
 
  //       private static string _statusUpdateMsgRoute = ConfigurationManager.AppSettings["StatusUpdateMsgRoute"];
  //       private static string _statusUpdateMsgExchange = ConfigurationManager.AppSettings["StatusUpdateMsgExchange"];
  //
-        private static readonly string _conversationUpdateMsgProcessExchange = ConfigurationManager.AppSettings["ProcessExchange"];
-        public static readonly string ConversationUpdateMsgProcessQueue = ConfigurationManager.AppSettings["ProcessQueue"];
+        private readonly string _conversationUpdateMsgProcessExchange = ConfigurationManager.AppSettings["ProcessExchange"];
+        public string ConversationUpdateMsgProcessQueue { get { return ConfigurationManager.AppSettings["ProcessQueue"]; } }
 
         private static readonly string _conversationUpdateMsgNofifyExchange = ConfigurationManager.AppSettings["NotifyExchange"];
  //       private static string _conversationUpdateMsgNotifyRouteFormat = ConfigurationManager.AppSettings["ConversationUpdateMsgNotifyRouteFormat"];
@@ -29,10 +30,12 @@ namespace AchChat.processor
             //bus.DefineRouteFor<StatusUpdateMsg>(x => x.SendTo(_statusUpdateMsgRoute));
 
             //Incoming messages from clients to be processed
-            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgProcessExchange, ExchangeType.fanout).QueueName(_conversationUpdateMsgProcessQueue).Durable());
-            
+            "Binding {0} (Queue) to {1} (Exchange)".ToDebug<AchChatProcessorService>(ConversationUpdateMsgProcessQueue, _conversationUpdateMsgProcessExchange);
+            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgProcessExchange, ExchangeType.fanout).QueueName(ConversationUpdateMsgProcessQueue).Durable());
+
             //Outgoing notifications to clients
-            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgNofifyExchange, ExchangeType.fanout).QueueName(_conversationUpdateMsgNotifyQueue).Durable());
+            "Creating Exchange Endpoint {0}".ToDebug<AchChatProcessorService>(_conversationUpdateMsgProcessExchange);
+            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgNofifyExchange, ExchangeType.fanout));
             bus.DefineRouteFor<ConversationUpdateMsg>(x => x.SendTo(_conversationUpdateMsgNofifyExchange));
         }
 

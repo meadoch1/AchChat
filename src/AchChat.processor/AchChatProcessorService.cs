@@ -1,5 +1,6 @@
 ﻿using System;
 using Relax;
+using Symbiote.Core.Extensions;
 using Symbiote.Daemon;
 using Symbiote.Jackalope;
 
@@ -21,6 +22,7 @@ namespace AchChat.processor
 
         public void Start()
         {
+            "ACH Chat Processor Starting Up...".ToDebug<AchChatProcessorService>();
             _bus.Subscribe(_endpointConfig.ConversationUpdateMsgProcessQueue);
         }
 

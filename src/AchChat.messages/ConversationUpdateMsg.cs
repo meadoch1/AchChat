@@ -11,7 +11,7 @@ namespace AchChat.messages
     {
         public Guid ConversationId { get; set; }
         public string FromUser { get; set; }
-        public IChatMessage Content { get; set; }
-        public bool Sent { get; set; }
+        public string Content { get; set; }
+        public DateTime Sent { get; set; }
     }
 }
