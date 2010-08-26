@@ -12,8 +12,8 @@ namespace MsgRecipientSimulator
     {
         public void Process(ConversationUpdateMsg message, IMessageDelivery messageDelivery)
         {
-            "Received a message from {0} that says: {1}".ToDebug<ChatRecipientSimulatorService>(message.FromUser,
-                                                                                                message.Content);
+            "Received a message from {0} that says \"{1}\" generated at {2}".ToDebug<ChatRecipientSimulatorService>(message.FromUser,
+                                                                                                message.Content, message.Sent);
             messageDelivery.Acknowledge();
         }
     }

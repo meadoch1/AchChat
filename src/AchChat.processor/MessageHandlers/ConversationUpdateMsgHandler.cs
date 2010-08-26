@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AchChat.messages;
 using Symbiote.Jackalope;
+using Symbiote.Core.Extensions;
 
 namespace AchChat.processor.MessageHandlers
 {
@@ -21,6 +22,7 @@ namespace AchChat.processor.MessageHandlers
             // update model
 
             // publish notifications to clients
+            "Forwarding Message...{0}".ToDebug<AchChatProcessorService>(message.Sent);
             _bus.Send(message);
 
             // acknowledge msg

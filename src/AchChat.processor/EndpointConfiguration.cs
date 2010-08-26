@@ -34,8 +34,8 @@ namespace AchChat.processor
             bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgProcessExchange, ExchangeType.fanout).QueueName(ConversationUpdateMsgProcessQueue).Durable());
 
             //Outgoing notifications to clients
-            "Creating Exchange Endpoint {0}".ToDebug<AchChatProcessorService>(_conversationUpdateMsgProcessExchange);
-            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgNofifyExchange, ExchangeType.fanout));
+            "Creating Exchange Endpoint {0}".ToDebug<AchChatProcessorService>(_conversationUpdateMsgNofifyExchange);
+            bus.AddEndPoint(x => x.Exchange(_conversationUpdateMsgNofifyExchange, ExchangeType.fanout).Durable());
             bus.DefineRouteFor<ConversationUpdateMsg>(x => x.SendTo(_conversationUpdateMsgNofifyExchange));
         }
 

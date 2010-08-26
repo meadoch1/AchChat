@@ -21,7 +21,7 @@ namespace MsgRecipientSimulator
                        x.AddServer(s =>
                            s.Address("localhost")
                             .AMQP08()))
-                   .AddConsoleLogger<ChatRecipientSimulatorService>(x => x.MessageLayout(m => m.Date().Message()))
+                   .AddConsoleLogger<ChatRecipientSimulatorService>(x => x.MessageLayout(m => m.Date().Message().Newline()))
                    .Daemon(x =>
                        x.Arguments(args)
                        .Description("Acts as a recipient of the Chat Processor's notifications.")
@@ -44,7 +44,8 @@ namespace MsgRecipientSimulator
 
         public void Start()
         {
-            _bus.AddEndPoint(x => x.Exchange("ChatProcess", ExchangeType.fanout).QueueName("ChatRecipientSimulator"));
+            _bus.AddEndPoint(x => x.Exchange("ChatUserNotify", ExchangeType.fanout).QueueName("ChatRecipientSimulator").Durable());
+            _bus.Subscribe("ChatRecipientSimulator");
             "Listening for teh messagez".ToDebug<ChatRecipientSimulatorService>();
         }
 

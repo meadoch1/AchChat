@@ -18,7 +18,7 @@ namespace DummyMessageGenerator
 
         public void Start()
         {
-            _bus.AddEndPoint(x => x.Exchange("ChatProcess", ExchangeType.fanout));
+            _bus.AddEndPoint(x => x.Exchange("ChatProcess", ExchangeType.fanout).Durable());
 
             for(int i = 5; i >= 0; i-- )
             {
@@ -26,7 +26,7 @@ namespace DummyMessageGenerator
                 {
                     "Sending Message...".ToDebug<DummyMessageGeneratorService>();
                     _bus.Send("ChatProcess", new ConversationUpdateMsg() { Content = x.ToString(), FromUser = i.ToString(), Sent = DateTime.Now });
-                    Thread.Sleep(i * 2075);
+                    Thread.Sleep(i * 1000);
                 }
             }
         }

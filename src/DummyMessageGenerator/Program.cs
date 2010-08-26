@@ -19,7 +19,7 @@ namespace DummyMessageGenerator
                        x.AddServer(s =>
                            s.Address("localhost")
                             .AMQP08()))
-                   .AddConsoleLogger<DummyMessageGeneratorService>(x => x.MessageLayout(m => m.Date().Message()))
+                   .AddConsoleLogger<DummyMessageGeneratorService>(x => x.MessageLayout(m => m.Date().Message().Newline()))
                    .Daemon(x =>
                        x.Arguments(args)
                        .Description("Generates fake messages for testing...")
