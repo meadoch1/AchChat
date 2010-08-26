@@ -81,7 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AchChatProcessor.cs" />
+    <Compile Include="AchChatProcessorService.cs" />
+    <Compile Include="EndpointConfiguration.cs" />
+    <Compile Include="IConfigureEndpoints.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +94,10 @@
     <ProjectReference Include="..\AchChat.domain\AchChat.domain.csproj">
       <Project>{CCEFF30E-0807-4AC7-9D67-46E6E41D6F9A}</Project>
       <Name>AchChat.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AchChat.messages\AchChat.messages.csproj">
+      <Project>{B179B7D5-CE86-4369-83E3-7308EBF81B12}</Project>
+      <Name>AchChat.messages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
