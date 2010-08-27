@@ -46,7 +46,12 @@ namespace MsgRecipientSimulator
         {
             _bus.AddEndPoint(x => x.Exchange("ChatUserNotify", ExchangeType.fanout).QueueName("ChatRecipientSimulator").Durable());
             _bus.Subscribe("ChatRecipientSimulator");
-            "Listening for teh messagez".ToDebug<ChatRecipientSimulatorService>();
+            "Listening for generic messagez".ToDebug<ChatRecipientSimulatorService>();
+
+            _bus.AddEndPoint(x => x.Exchange("ChatRequestNotify", ExchangeType.fanout).QueueName("ChatRecipientSimulatorRequest").Durable());
+            _bus.Subscribe("ChatRecipientSimulatorRequest");
+            "Listening for reuests".ToDebug<ChatRecipientSimulatorService>();
+
         }
 
         public void Stop()

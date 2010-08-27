@@ -22,11 +22,13 @@ namespace DummyMessageGenerator
 
             for(int i = 5; i >= 0; i-- )
             {
+                "Creating new Conversation...".ToDebug<DummyMessageGeneratorService>();
+                _bus.Send("ChatProcess", new ConversationRequestMsg() { ConversationId = Guid.NewGuid(), FromUser = i.ToString(), Sent = DateTime.Now });
                 for(int x = 0; x <= 5; x++)
                 {
                     "Sending Message...".ToDebug<DummyMessageGeneratorService>();
                     _bus.Send("ChatProcess", new ConversationUpdateMsg() { Content = x.ToString(), FromUser = i.ToString(), Sent = DateTime.Now });
-                    Thread.Sleep(i * 1000);
+                    Thread.Sleep(1000);
                 }
             }
         }

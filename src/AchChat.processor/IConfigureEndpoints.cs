@@ -9,6 +9,9 @@ namespace AchChat.processor
     public interface IConfigureEndpoints
     {
         void Configure();
-        string ConversationUpdateMsgProcessQueue { get; }
+        string ProcessMsgQueue { get; }
+        string NotifyMsgExchange { get; }
+        string NotifyMsgRouteFormat { get; }
+        string RequestNotifyMsgExchange { get; }
     }
 }

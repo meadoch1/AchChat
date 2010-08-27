@@ -93,7 +93,9 @@
     <Compile Include="AchChatProcessorService.cs" />
     <Compile Include="EndpointConfiguration.cs" />
     <Compile Include="IConfigureEndpoints.cs" />
+    <Compile Include="MessageHandlers\ConversationRequestMsgHandler.cs" />
     <Compile Include="MessageHandlers\ConversationUpdateMsgHandler.cs" />
+    <Compile Include="MessageHandlers\MsgHandlerBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

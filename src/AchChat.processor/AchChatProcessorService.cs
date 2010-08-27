@@ -23,7 +23,7 @@ namespace AchChat.processor
         public void Start()
         {
             "ACH Chat Processor Starting Up...".ToDebug<AchChatProcessorService>();
-            _bus.Subscribe(_endpointConfig.ConversationUpdateMsgProcessQueue);
+            _bus.Subscribe(_endpointConfig.ProcessMsgQueue);
         }
 
         public void Stop()

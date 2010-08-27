@@ -5,16 +5,16 @@ using System.Text;
 using AchChat.messages;
 using Symbiote.Jackalope;
 using Symbiote.Core.Extensions;
+using AchChat.processor;
 
 namespace AchChat.processor.MessageHandlers
 {
-    public class ConversationUpdateMsgHandler : IMessageHandler<ConversationUpdateMsg>
+    public class ConversationUpdateMsgHandler : MsgHandlerBase, IMessageHandler<ConversationUpdateMsg>
     {
-        private IBus _bus;
-
-        public ConversationUpdateMsgHandler(IBus bus)
+        public ConversationUpdateMsgHandler(IBus bus, IConfigureEndpoints configureEndpoints)
+            : base(bus, configureEndpoints)
         {
-            _bus = bus;
+            
         }
 
         public void Process(ConversationUpdateMsg message, IMessageDelivery messageDelivery)
@@ -23,7 +23,7 @@ namespace AchChat.processor.MessageHandlers
 
             // publish notifications to clients
             "Forwarding Message...{0}".ToDebug<AchChatProcessorService>(message.Sent);
-            _bus.Send(message);
+            _bus.Send(_configureEndpoints.NotifyMsgExchange, message, string.Format(_configureEndpoints.NotifyMsgRouteFormat, message.ConversationId));
 
             // acknowledge msg
             messageDelivery.Acknowledge();
